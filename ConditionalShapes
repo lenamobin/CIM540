@@ -1,0 +1,66 @@
+var startColor;
+var endColor;
+var bgColor;
+var counter;
+
+function setup() {
+  createCanvas(600,500);
+  startColor = color(51);
+  endColor= color(25,0,150,54);
+  counter= 0;
+  bgColor = lerpColor(startColor, endColor, counter);
+  
+}
+
+function draw() {
+  background(bgColor);
+  counter = counter + .01;
+  bgColor = lerpColor(startColor, endColor, counter);
+  
+  if (mouseX>100){
+    ellipse(300,250,200,200);
+
+  }
+  
+  if(mouseX>200){
+    noStroke();
+    ellipse(100,25,5,5);
+    ellipse(150,30,5,5);
+    ellipse(200,35,5,5);
+    ellipse(250,40,5,5);
+    ellipse(300,45,5,5);
+    ellipse(350,50,5,5);
+    ellipse(400,55,5,5);
+    ellipse(450,60,5,5);
+   
+  }
+  else{
+    noStroke();
+    ellipse(100,250,5,5);
+    ellipse(150,300,5,5);
+    ellipse(200,350,5,5);
+    ellipse(250,400,5,5);
+    ellipse(300,450,5,5);
+    ellipse(350,500,5,5);
+    ellipse(400,550,5,5);
+    ellipse(450,600,5,5);
+  }
+  
+  if(mouseX>400){
+    noStroke();
+    ellipse(10,250,5,5);
+    ellipse(15,300,5,5);
+    ellipse(20,350,5,5);
+    ellipse(25,400,5,5);
+    ellipse(30,450,5,5);
+    ellipse(35,500,5,5);
+    ellipse(40,550,5,5);
+    ellipse(45,600,5,5);
+  }
+
+
+}
+
+function mousePressed(){
+  window.location = 'http://stars.chromeexperiments.com/';
+}
