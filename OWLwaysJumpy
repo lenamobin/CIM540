@@ -1,0 +1,38 @@
+var speed = 2.5;
+var diameter = 20
+var x;
+var y;
+
+function setup() {
+  createCanvas(400, 400);
+  x = width/2;
+  y = height/2;
+  background(204);
+  textSize(30);
+  text("OWLways Jumpy",150,300);
+
+}
+
+function draw() {
+  x += random(-speed,speed);
+  y += random(-speed,speed);
+  owl(x,y,diameter,diameter);
+}
+
+function owl(x,y) {
+  push();
+  translate(x,y);
+  stroke(0);
+  strokeWeight(70);
+  line(0,-35,0,-65); //Body
+  noStroke();
+  fill(255);
+  ellipse(-17.5, -65, 35, 35); //Left eye dome
+    ellipse(17.5, -65, 35, 35); //Right eye dome
+    arc(0,-65,70,70,0,PI); //chin
+    fill(0);
+    ellipse(-14,-65,8,8); //Left eye
+    ellipse(14,-65,8,8); //Right eye
+    quad(0,-58,4,-51,0,-44,-4,-51); //Beak
+    pop();
+}
