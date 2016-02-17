@@ -1,0 +1,39 @@
+var selectedFly;
+var flySizes;
+var colors = [];
+var brushes;
+
+function setup() {
+	createCanvas(windowWidth, windowHeight); 
+	selectedFly = 0;
+	brushes= ["off", "on", "off", "on"];
+	flySizes = [40,50,30,20];
+	colors[0] = color(0);
+	colors[1] = color(255,204,100);
+	colors[2] = color(51);
+	colors[3] = color(255,204,0);
+}
+
+function draw() {
+	background(0);
+	textSize(30);
+	textAlign(LEFT);
+	textStyle(ITALIC);
+	fill(0);
+	stroke(255,204,0);
+	strokeWeight(3);
+	text("Fireflies " + brushes[selectedFly], width/2, height/2);
+	fill(colors[selectedFly]);
+	//fill(127,127,0);
+	stroke(255,204,0);
+	arc(mouseX, mouseY, flySizes[selectedFly], flySizes[selectedFly],mouseX, mouseY);
+	arc(mouseY, mouseX, flySizes[selectedFly], flySizes[selectedFly],mouseY, mouseX);
+}
+
+function mousePressed() {
+	selectedFly++;
+
+	if (selectedFly >= flySizes.length) {
+		selectedFly = 0;
+	}
+}
