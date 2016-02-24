@@ -1,0 +1,50 @@
+var myArray = [];
+var startColor;
+var endColor;
+var bgColor;
+var counter;
+
+function setup() {
+  createCanvas(windowWidth,windowHeight);
+  startColor = color(51);
+  endColor= color(25,0,150,54);
+  counter= 0;
+  bgColor = lerpColor(startColor, endColor, counter);
+  noStroke();
+  fill(255,200);
+  for (var i = 0; i < 3000; i++) {
+    myArray[i] = random(1000, 200);
+  }
+  alert("Are you prepared to go OUT OF THIS WORLD");
+}
+
+function draw() {
+  background(bgColor);
+  counter = counter + .01;
+  bgColor = lerpColor(startColor, endColor, counter);
+  fill(255);
+  rect(mouseX,mouseY,100,50);
+  rect(mouseX,mouseY,150,20)
+  for (var i = 0; i < myArray.length; i++) {
+    myArray[i] += 0.5;
+    var y = i * 0.4;
+    ellipse(myArray[i], y, 12, 12);
+      if (mouseX < width/2) {
+        myArray[i] = myArray[i] - (mouseX*0.01);
+      }
+      if (mouseX > width/2) {
+        myArray[i] = myArray[i] - (mouseX*0.01);
+      }
+      if (mouseY < height/2) {
+        myArray[i] = myArray[i] - (mouseX*0.01);
+      }
+      if (mouseY > height/2) {
+        myArray[i] = myArray[i] - (mouseX*0.01);
+      }
+  }
+
+}
+
+function mousePressed(){
+  window.location = 'http://stars.chromeexperiments.com/';
+}
