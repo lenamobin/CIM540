@@ -1,0 +1,40 @@
+var x = [];
+var y = [];
+var circles = [];
+
+function setup() {
+   createCanvas(windowWidth, windowHeight);
+  
+  for (var i = 0; i < width; i = i + 1) {
+    x.push(random(0,width));
+    y.push(random(0,height));
+    //circles.push(random(10,50));
+  }
+}
+
+function draw() {
+  background(0);
+  //draw ellipses here
+  //dist() to change color
+  for (var i = 0; i < x.length; i = i + 1) {
+    fill(255,0,random(255));
+    ellipse(x[i], y[i], 40, 40);
+  }
+  if (dist(x,y,x,y)< 10){
+    fill(255,0,0);
+  }
+  
+}
+
+function mousePressed() {
+  //create new balls here
+  if (circles > width) {
+    ellipse(x[i], y[i], 40, 40);
+  }
+  if (x > width) {
+    x = x - 3 
+    
+  }
+  x.push(mouseX);
+  y.push(mouseY);
+}
