@@ -1,0 +1,60 @@
+function Jitterbug(tempX,tempY,tempDiameter) {
+  this.x = tempX;
+  this.y = tempY;
+  this.diameter = tempDiameter;
+  this.speed = random(1,6);
+  
+  this.move = function(){
+    this.x += random(-this.speed, this.speed);
+    this.y += random(-this.speed, this.speed);
+  };
+  
+  this.display = function() {
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  };
+}
+
+var Ball = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.diameter = 10;
+}
+
+Ball.prototype.show = function() {
+	ellipse(this.x, this.y, this.diameter, this.diameter);
+}
+
+Ball.prototype.fall = function() {
+	this.y = this.y + 1;
+}
+
+var balls = [];
+
+var bug;
+var jit;
+
+
+function setup() {
+  createCanvas(windowWidth,windowHeight);
+  background(0);
+  jit = new Jitterbug(width * 0.33, height/2, 50);
+  bug = new Jitterbug(width * 0.66, height/2, 10);
+  
+  
+}
+
+function draw() {
+  jit.move();
+  jit.display();
+  bug.move();
+  bug.display();
+
+  for (var i = 0; i < balls.length; i++) {
+  	balls[i].show();
+  	balls[i].fall();
+  }
+}
+
+function mousePressed() {
+	balls.push( new Ball(mouseX, mouseY) );
+}
