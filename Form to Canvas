@@ -1,0 +1,31 @@
+var canvas;
+var ballSize;
+var ballColor;
+var slider;
+
+
+function setup() {
+	canvas = createCanvas(500, 500); 
+	slider= createSlider(0, 255, 100);
+	slider.position(500,475);
+	ballColor = document.getElementById('colorSelector');
+	ballSize = document.getElementById('ballSlider');
+	canvas.parent('middle_panel');
+	background(0);
+	
+}
+
+function draw() {
+	background(0);
+	var gray = slider.value();
+	background(gray);
+	fill(255);
+	fill(ballColor.value);
+	ellipse(width/2, height/2, ballSize.value, ballSize.value);
+	  	if (mouseIsPressed){
+	  	  fill(200,34,20);
+	  	  noStroke();
+	  	  ellipse(mouseX,mouseY,20,20);
+	  	}
+}
+
