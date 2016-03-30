@@ -1,0 +1,38 @@
+var api_key = "10572a53d9a865c840fc57d596d02251";
+var city = "Zion";
+var temp = 0;
+var num = 60;
+var x = [];
+var y = [];
+
+function setup() {
+  createCanvas(windowWidth,windowHeight);
+  noStroke();
+  
+  for (var i = 0; i<num; i++){
+    x[i]=0;
+    y[i]=0;
+  }
+  
+  var url = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID="+api_key;
+  loadJSON(url, receivedWeather);
+}
+
+function draw() {
+  ellipse(width/2,height/2,temp,temp);
+  for (var i = num-1; i > 0; i--){
+    x[i] = x[i-1];
+    y[i] = y[i-1];
+  }
+  x[0] = mouseX;
+  y[0] = mouseY;
+  for (var i = 0; i < num; i++){
+    fill(i*4);
+    ellipse(x[i], y[i], 40,40);
+  }
+}
+
+function receivedWeather(theWeather){
+  console.log(theWeather);
+  temp = theWeather.main.temp;
+}
